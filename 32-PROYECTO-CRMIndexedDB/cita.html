@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM - IndexedDB</title>
+    <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-100 bg-gray-200">
+    <div class="md:flex min-h-screen md:align-top">
+        <aside class="md:w-2/5 lg:w-2/5 xl:w-1/5 bg-teal-600 px-5 py-10">
+            <h1 class="uppercase text-white tracking-wide text-2xl  font-bold mt-2">MUNDO VET CR</h1>
+            <p class="mt-10 text-white">SUCURSAL VENECIA</p>
+            <nav class="mt-8">
+                <a  
+                    href="index.html" 
+                    class="px-3 py-1 text-white block hover:bg-teal-700 hover:text-yellow-400 "
+                >Clientes</a>
+               
+                <a 
+                    href="cita.html" 
+                    class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                >Citas</a>
+                <a 
+                    href="historia-cita.html" 
+                    class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                >Cita Historia</a>
+                <a 
+                    href="proveedores.html" 
+                    class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                >Proveedores</a>
+                <a 
+                    href="stock.html" 
+                    class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                >STOCK MEDICAMENTOS</a>
+                <a 
+                    href="register.html" 
+                    class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                >LOGOUT</a>
+            </nav>
+        </aside> <!--sidebar-->
+        <h2 class="text-center my-5 titulo"></h2>
+    <div class="container mt-5 p-5">
+        <div id="contenido" class="row">
+            <div class="col-md-6 agregar-cita">
+                <form id="nueva-cita">
+                    <legend class="mb-4">Datos del Paciente</legend>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Nombre Mascota:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="text" id="mascota" name="mascota" class="form-control" placeholder="Nombre Mascota">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Propietario:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="text" id="propietario" name="propietario" class="form-control"  placeholder="Nombre Dueño de la Mascota">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Teléfono:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="tel" id="telefono" name="telefono" class="form-control"  placeholder="Número de Teléfono">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Fecha:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="date" id="fecha" name="fecha" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Hora:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="time" id="hora" name="hora" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Sintomas:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <textarea id="sintomas" name="sintomas" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <button type="submit" class="btn btn-success w-100 d-block">Crear Cita</button>
+                    </div>
+                    
+                </form>
+                
+            </div>
+            <div class="col-md-6">
+                
+                <h2 id="administra" class="mb-4">Administra tus Citas</h2>
+                <!--Buscador de clientes y proovedores-->
+                <div class="pt-2 relative mx-auto text-gray-600">
+                    <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                    type="search" name="search" placeholder="Search">
+                    <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+                    <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                        viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                        width="512px" height="512px">
+                        <path
+                        d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                    </svg>
+                    </button>
+                </div>
+                
+                <ul id="citas" class="list-group lista-citas"></ul>
+                
+            </div>
+        </div> <!--.row-->
+    </div><!--.container-->
+
+    <script src="js/cita copy.js"></script>
+</body>
+</html>
